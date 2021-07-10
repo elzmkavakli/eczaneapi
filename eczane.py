@@ -5,7 +5,7 @@ headers = {
     'content-type': "application/json",
     'authorization': "apikey 5tCBxAFxdnYeuY5eSZMpKT:2g7n15R9k4ootHADsjl6Vz"
     }
-//il ve ilce ayarlamasi yapiliyor
+#il ve ilce ayarlamasi yapiliyor
 il=input("İl Giriniz:")
 if il=="":
     print("İl Boş bırakılırsa Elazig İline ait veriler gelecek")
@@ -19,14 +19,14 @@ if ilce=="":
 else:
     ilce=ilce.strip().capitalize()
 print(il,ilce)
-bilgi="/health/dutyPharmacy?ilce="+ilce+"&il="+il
-conn.request("GET",bilgi, headers=headers)
+adres="/health/dutyPharmacy?ilce="+ilce+"&il="+il
+conn.request("GET",adres, headers=headers)
 res = conn.getresponse()
 data = res.read()
 
 veri=data.decode("utf-8")
 json_veri=json.loads(veri)
-//print(json_veri)
+#print(json_veri)
 if json_veri["success"]==True:
     bilgi1=json_veri["result"][0]
     print("Eczane Adı:"+bilgi1["name"]+"\nAdresi:"+bilgi1["address"]+"\nTelefonu:"+bilgi1["phone"])
